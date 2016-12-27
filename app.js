@@ -17,7 +17,14 @@ if (command === 'add') {
     console.log('Note already exists!');
   }
 } else if (command === 'list') {
-  notes.getAll();
+  var foundNotes = notes.getAll();
+  if (foundNotes.length > 0){
+    foundNotes.map((note) => {
+      console.log(note);
+    });
+  } else {
+    console.log('There is no notes to show!')
+  }
 } else if (command === 'find') {
   var note = notes.getNote(argv.title);
   if (note) {

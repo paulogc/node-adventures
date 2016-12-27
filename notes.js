@@ -44,11 +44,7 @@ const add = (title, body) => {
 const getAll = () => {
   var notes = fetchNotes();
 
-  if (notes.length > 0){
-    notes.map((note) => {
-      console.log(note);
-    });
-  }
+  return notes;
 }
 
 const getNote = (title) => {
