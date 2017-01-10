@@ -24,31 +24,4 @@ var geocodeAddress = (address, callback) => {
   });
 };
 
-var weatherAddress = (address, key, callback) => {
-  var weatherUrl = `https://api.darksky.net/forecast/${key}/${address.lat},${address.lng}`
-  console.log(weatherUrl);
-  request({
-    url: weatherUrl,
-    json: true,
-  }, (error, response, body) => {
-    console.log(JSON.stringify(response));
-    if (error) {
-      cosnole.log('oi');
-      callback('Something unexpected happen');
-    } else if (body.status === ZERO_RESULTS) {
-      cosnole.log('oi');
-      callback('Unable to find address');
-    } else if (body.status === OK_RESULT) {
-      cosnole.log('oi');
-      callback(undefined, {
-        temperature: body.results[0].currently.temperature,
-        apparentTemperature: body.results[0].currently.apparentTemperature,
-      });
-    }
-  });
-}
-
-module.exports = {
-  geocodeAddress,
-  weatherAddress,
-};
+module.exports.geocodeAddress = geocodeAddress;
